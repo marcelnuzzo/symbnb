@@ -1,5 +1,8 @@
 {% extends "base.html.twig" %}
 
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
 {% block title %}Création d'une annonce{% endblock %}
 
 
@@ -10,7 +13,13 @@
 
         {{ form_start(form) }}
 
-        {{ form_widget(form) }}
+        {{ form_row(form.title, {'label': 'Titre','attr': {'placeholder': "Tapez un super titre pour votre annonce"}}) }}
+        {{ form_row(form.slug, {'label': 'Adresse web','attr': {'placeholder': "adresse web"}}) }}
+        {{ form_row(form.coverImage, {'label': "Url de l'image principale",'attr': {'placeholder': "Donnez l'adresse d'une image qui donne vraiment envie"}}) }}
+        {{ form_row(form.introduction, {'attr': {'placeholder': "Donnez une description globale de l'annonce"}}) }}
+        {{ form_row(form.content, {'label': 'Description détaillée', 'attr': {'placeholder': "Tapez une description qui donne vraiment envie de venir chez vous!"}}) }}
+        {{ form_row(form.rooms, {'label': 'Nombre de chambres','attr': {'placeholder': "Le nombre de chambres disponibles"}}) }}
+        {{ form_row(form.price, {'label': 'Prix par nuit','attr': {'placeholder': "Indiquez le prix que vous voulez pour une nuit"}}) }}
 
         <button type="submit" class="btn btn-primary">Créer la nouvelle annonce</button>
 
