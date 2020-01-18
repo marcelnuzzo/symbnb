@@ -41,36 +41,16 @@ class AdController extends AbstractController
      */
     public function create(EntityManagerInterface $manager, Request $request) {
         $ad = new Ad();
-
-        $image = new Image();
-        $image->setUrl('http://placehold.it/400x200')
-              ->setCaption('Titre 1');
-        $image2 = new Image();
-        $image2->setUrl('http://placehold.it/400x200')
-            ->setCaption('Titre 2');
-        $ad->addImage($image);
-        $ad->addImage($image2);
         
-        $form = $this->createFormBuilder($ad)
-                     ->add('title')
-                     ->add('slug')
-                     ->add('introduction', TextType::class)
-                     ->add('content')
-                     ->add('rooms')
-                     ->add('price', MoneyType::class)
-                     ->add('coverImage', UrlType::class)
-                     ->add(
-                         'images',
-                         CollectionType::class,
-                         [
-                             'entry_type' => ImageType::class
-                         ]
-                     )
-                     ->getForm();
+        $form = $this->createForm(AdType::class, $ad);
 
                     $form->handleRequest($request);
                
-                    if($form->isSubmitted() && $form->isValid()) {
+                    if($form->isSubmitted() && $form->isValid()) {  
+                        foreach($ad->getImages() as $image) {
+                            $image->setAd($ad);
+                            $manager->persist($image);
+                        }
                         
                         $manager->persist($ad);
                         $manager->flush();
@@ -114,10 +94,11 @@ class AdController extends AbstractController
                     $manager->persist($ad);
                     $manager->flush();
             
-                        return $this->redirectToRoute('ads_show',  ['id' => $ad->getId()
-                        ]);
+                    return $this->redirectToRoute('ads_show', [
+                        'slug' => $ad->getSlug()
+                    ]);
                 }
-                return $this->render('ad/nouveau.html.twig', [
+                return $this->render('ads/nouveau.html.twig', [
                     'form' => $form->createView()
                 ]);
 
