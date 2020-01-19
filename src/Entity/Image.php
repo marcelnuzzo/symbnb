@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,11 +18,13 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url()
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=4, minMessage="Le titre de l'image doit faire au moins 4 caractères !")
      */
     private $caption;
 

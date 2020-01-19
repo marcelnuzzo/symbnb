@@ -1,19 +1,19 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Création d'une annoce{% endblock %}
+{% block title %}Edition d'une annoce{% endblock %}
 
 {% form_theme form 'ad/_collection.html.twig' %}
 
 {% block body %}
 
     <div class="container">
-        <h1>Créer une annoce</h1>
+        <h1>Modifier l'annoce : {{ad.title}}</h1>
 
         {{ form_start(form) }}
 
         {{ form_widget(form) }}
 
-        <button type="submit" class="btn btn-primary">Créer une annoce : </button>
+        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
 
         {{ form_end(form) }}
     </div>
