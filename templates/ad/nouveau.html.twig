@@ -1,8 +1,8 @@
 {% extends "base.html.twig" %}
 
-{% form_theme form _self %}
-
 {% block title %}Création d'une annonce{% endblock %}
+
+{% form_theme form 'ad/_collection.html.twig' %}
 
 {% block body %}
 
@@ -20,13 +20,8 @@
 
 {% endblock %}
 
-{% block _ad_images_widget %}
-    <p>Ici, vous pouvez ajouter vos propres images !</p>
+{% block javascripts %}
 
-    {{ form_widget(form) }}
-
-    <div class="form-group">
-        <button type="button" id="add-image" class="btn btn-primary">Ajouter une image</button>
-    </div>
+<script src="/js/ad.js"></script>
 
 {% endblock %}
