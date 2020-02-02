@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Connexion à l'administration</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .card {
+        margin-top: 10%;
+    }
+</style>
+<body>
+    <div class="col-md-4">
+        <div class="card bg-light">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <i class="fa fa-lock"></i>
+                    Connexion  l'administration
+                </h4>
+            </div>
+            <div class="card-body">
+                {% if hasError %}
+                    <div class="alert alert-warning">
+                        <p>Les informations que vous avez fourni ne sont pas bonnes/</p>
+                    </div>
+                {% endif %}
+                <form method="post">
+                    <div class="form-group"><label for="_username">Email</label><input type="text" class="form-control" placeholder="Adresse email ..." name="_username" value="{{ username }}"></div>
+                    <div class="form-group"><label for="_password">Mot de passe</label><input type="password" class="form-control" placeholder="Mot de passe ..." name="_password"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-lock-open"></i>
+                            Connexion !
+                        </button>
+                        <a href="{{ path('homepage') }}" class="btn btn-link">
+                            <i class="fa fa-arrow-circle-left"></i>
+                            Retour au site
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

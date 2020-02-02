@@ -5,17 +5,19 @@
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <title>SymBnB - {% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
         <link rel="stylesheet"  href="{{ asset('css/main.css') }}"> 
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% include 'partials/header.html.twig' %}
+        {% include 'admin/partials/header.html.twig' %}
 
         {% block body %}{% endblock %}
 
-        {% include 'partials/footer.html.twig' %}
+        {% include 'admin/partials/footer.html.twig' %}
 
         <script src="/js/jquery.min.js"></script>
         <script src="/js/popper.min.js"></script>
