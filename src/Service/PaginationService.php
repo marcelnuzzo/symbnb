@@ -81,13 +81,23 @@ class PaginationService {
         $this->templatePath = $templatePath;
     }
 
-    
+    /**
+     * Permet de choisir un template de pagination
+     *
+     * @param string $templatePath
+     * @return self
+     */
     public function setTemplatePath($templatePath) {
         $this->templatePath = $templatePath;
 
         return $this;
     }
 
+    /**
+     * Permet de récupérer le templatePath actuellement utilisé
+     *
+     * @return string
+     */ 
     public function getTemplatePath() {
         return $this->templatePath;
     }
@@ -98,6 +108,12 @@ class PaginationService {
         return $this;
     }
 
+    /**
+     * Permet de changer la route par défaut pour les liens de la navigation
+     *
+     * @param string $route Le nom de la route à utiliser
+     * @return self
+     */
     public function getRoute() {
         return $this->route;
     }
@@ -172,32 +188,68 @@ class PaginationService {
                     ->findBy([], [], $this->limit, $offset);
     }
 
+    /**
+     * Permet de spécifier la page que l'on souhaite afficher
+     *
+     * @param int $page
+     * @return self
+     */
     public function setPage($page) {
         $this->currentPage = $page;
 
         return $this;
     }
 
+    /**
+     * Permet de récupérer la page qui est actuellement affichée
+     *
+     * @return int
+     */
     public function getPage() {
         return $this->currentPage;
     }
 
+    /**
+     * Permet de spécifier le nombre d'enregistrements que l'on souhaite obtenir !
+     *
+     * @param int $limit
+     * @return self
+     */
     public function setLimit($limit) {
         $this->limit = $limit;
 
         return $this;
     }
 
+    /**
+     * Permet de récupérer le nombre d'enregistrements qui seront renvoyés
+     *
+     * @return int
+     */
     public function getLimit() {
         return $this->limit;
     }
 
+    /**
+     * Permet de spécifier l'entité sur laquelle on souhaite paginer
+     * Par exemple :
+     * - App\Entity\Ad::class
+     * - App\Entity\Comment::class
+     *
+     * @param string $entityClass
+     * @return self
+     */
     public function setEntityClass($entityClass) {
         $this->entityClass = $entityClass;
 
         return $this;
     }
 
+    /**
+     * Permet de récupérer l'entité sur laquelle on est en train de paginer
+     *
+     * @return string
+     */
     public function getEntityClass() {
         return $this->entityClass;
     }
